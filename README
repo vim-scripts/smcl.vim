@@ -1,0 +1,9 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1516
+
+smcl.vim is a syntax file for Stata's smcl- and hlp-files
+
+This syntax file will help identify: 
+
+* most smcl codes
+* errors in parens, brackets, ...
+
