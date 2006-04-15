@@ -2,17 +2,20 @@
 " Language:	SMCL -- Stata Markup and Control Language
 " Maintainer:	Jeff Pitblado <jpitblado@stata.com>
 " Last Change:	14apr2006
+" Version:	1.1.1
 " Location:	http://www.stata.com/users/jpitblado/files/vimfiles/syntax/stata_smcl.vim
 
 " Log:
-" 20mar2003 updated the match definition for cmdab
+" 20mar2003	updated the match definition for cmdab
+" 14apr2006	'syntax clear' only under version control
+"		check for 'b:current_syntax', removed 'did_smcl_syntax_inits'
 
-if exists("did_stata_smcl_syntax_inits")
-	" finish
+if version < 600
+	syntax clear
+elseif exists("b:current_syntax")
+	finish
 endif
-let did_stata_smcl_syntax_inits = 1
 
-syntax clear
 syntax case match
 
 syn keyword smclCCLword current_date		contained
@@ -291,14 +294,14 @@ syn region smclEString matchgroup=Nothing start=/`"/ end=/"'/ oneline contains=s
 
 " assign highlight groups
 
-hi link smclEString		smclString
+hi def link smclEString		smclString
 
-hi link smclCCLword		Statement
-hi link smclCCL			Type
-hi link smclFormat		Statement
-hi link smclLink		Underlined
-hi link smclComment		Comment
-hi link smclString		String
+hi def link smclCCLword		Statement
+hi def link smclCCL		Type
+hi def link smclFormat		Statement
+hi def link smclLink		Underlined
+hi def link smclComment		Comment
+hi def link smclString		String
 
 let b:current_syntax = "stata_smcl"
 
